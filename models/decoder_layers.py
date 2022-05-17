@@ -8,24 +8,26 @@ L2_WEIGHT_DECAY = 1e-4
 
 
 class SegmentationHead(tfkl.Layer):
-    def __init__(self, name="seg_head", filters=9, kernel_size=1, upsampling_factor=16, ** kwargs):
+    def __init__(self, name="seg_head",
+                 num_classes=9,
+                 kernel_size=1, 
+                 final_act='sigmoid',
+                 ** kwargs):
         super(SegmentationHead, self).__init__(name=name, **kwargs)
-        self.filters = filters
+        self.num_classes = num_classes
         self.kernel_size = kernel_size
-        self.upsampling_factor = upsampling_factor
+        self.final_act  = final_act
 
     def build(self, input_shape):
         self.conv = tfkl.Conv2D(
-            filters=self.filters, kernel_size=self.kernel_size, padding="same",
+            filters=self.num_classes, kernel_size=self.kernel_size, padding="same",
             kernel_regularizer=tfk.regularizers.L2(L2_WEIGHT_DECAY), 
             kernel_initializer=tfk.initializers.LecunNormal())
-        self.upsampling = tfkl.UpSampling2D(
-            size=self.upsampling_factor, interpolation="bilinear")
+        self.act = tfkl.Activation(self.final_act)
 
     def call(self, inputs):
         x = self.conv(inputs)
-        if self.upsampling_factor > 1:
-            x = self.upsampling(x)
+        x = self.act(x)
         return x
 
 
