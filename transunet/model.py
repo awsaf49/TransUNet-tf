@@ -1,9 +1,9 @@
-import models.encoder_layers as encoder_layers
-import models.decoder_layers as decoder_layers
-from models.resnet_v2 import ResNetV2
+import transunet.encoder_layers as encoder_layers
+import transunet.decoder_layers as decoder_layers
+from transunet.resnet_v2 import ResNetV2
 import tensorflow_addons as tfa
 import matplotlib.pyplot as plt
-import models.utils as utils
+import transunet.utils as utils
 import tensorflow as tf
 import math
 
@@ -33,7 +33,7 @@ def resnet_embeddings(x, image_size=224, n_skip=3):
             features.append(resnet50v2.get_layer(l).output)
     return resnet50v2, features
     
-def build_model(image_size=224, 
+def TransUnet(image_size=224, 
                 patch_size=16, 
                 hybrid=True,
                 grid=(14,14), 
