@@ -1,0 +1,10 @@
+ml-collections
+tensorflow-addons
+opencv-python
+validators
+tensorflow 
+SimpleITK
+medpy
+numpy 
+scipy
+tqdm
