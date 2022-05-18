@@ -9,6 +9,12 @@ cd TransUnet-tf
 pip install -r requirements.txt
 ```
 
+## Usage
+```py
+from transunet import TransUnet
+model = TransUnet(image_size=224, pretrain=True)
+```
+
 ## References 
 * [TransUNet](https://github.com/Beckschen/TransUNet)
 * [TransUnet](https://github.com/kenza-bouzid/TransUnet)
