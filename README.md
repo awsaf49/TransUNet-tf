@@ -5,14 +5,14 @@
 ## Installation
 ```shell
 git clone https://github.com/awsaf49/TransUNet-tf.git
-cd TransUnet-tf
+cd TransUNet-tf
 pip install -r requirements.txt
 ```
 
 ## Usage
 ```py
-from transunet import TransUnet
-model = TransUnet(image_size=224, pretrain=True)
+from transunet import TransUNet
+model = TransUNet(image_size=224, pretrain=True)
 ```
 
 ## References 
