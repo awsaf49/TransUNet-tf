@@ -1,4 +1,4 @@
-## TransUnet
+## TransUNet
 > Tensorflow Implementation of [TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation](https://arxiv.org/pdf/2102.04306.pdf)
 <img src="https://production-media.paperswithcode.com/social-images/hfPJrzzvUuaeIMvb.png" width=800>
 
