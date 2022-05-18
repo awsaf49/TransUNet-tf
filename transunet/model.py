@@ -21,7 +21,9 @@ def load_pretrained(model, fname='R50+ViT-B_16.npz'):
     
 def resnet_embeddings(x, image_size=224, n_skip=3):
     resnet50v2 = tfk.applications.ResNet50V2(
-        include_top=False, input_shape=(image_size, image_size, 3))
+        weights='imagenet,
+        include_top=False,
+        input_shape=(image_size, image_size, 3))
     resnet50v2.trainable = False
     _ = resnet50v2(x)
     layers = ["conv3_block4_preact_relu",

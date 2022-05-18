@@ -1,1 +1,1 @@
-from .model import TransUnet
+from .model import TransUNet
