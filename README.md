@@ -4,7 +4,7 @@
 
 ## Installation
 ```shell
-git clone https://github.com/awsaf49/TransUnet-tf.git
+git clone https://github.com/awsaf49/TransUNet-tf.git
 cd TransUnet-tf
 pip install -r requirements.txt
 ```
