@@ -2,8 +2,14 @@
 > Tensorflow Implementation of [TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation](https://arxiv.org/pdf/2102.04306.pdf)
 <img src="https://production-media.paperswithcode.com/social-images/hfPJrzzvUuaeIMvb.png" width=800>
 
-## References 
+## Installation
+```shell
+git clone https://github.com/awsaf49/TransUnet-tf.git
+cd TransUnet-tf
+pip install -r requirements.txt
+```
 
+## References 
 * [TransUNet](https://github.com/Beckschen/TransUNet)
 * [TransUnet](https://github.com/kenza-bouzid/TransUnet)
 * [vit-keras](https://github.com/faustomorales/vit-keras)
