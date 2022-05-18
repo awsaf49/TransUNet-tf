@@ -20,11 +20,10 @@ def load_pretrained(model, fname='R50+ViT-B_16.npz'):
     utils.load_weights_numpy(model, local_filepath)
     
 def resnet_embeddings(x, image_size=224, n_skip=3):
-    resnet50v2 = tfk.applications.ResNet50V2(
-        weights='imagenet,
-        include_top=False,
-        input_shape=(image_size, image_size, 3))
-    resnet50v2.trainable = False
+    resnet50v2 = tfk.applications.ResNet50V2(weights='imagenet',
+                                             include_top=False, 
+                                             input_shape=(image_size, image_size, 3))
+    # resnet50v2.trainable = False
     _ = resnet50v2(x)
     layers = ["conv3_block4_preact_relu",
               "conv2_block3_preact_relu",
@@ -51,6 +50,7 @@ def TransUNet(image_size=224,
                 final_act='sigmoid',
                 pretrain=True,
                 trainable=True,
+                freeze_enc_cnn=True,
                 name='TransUNet'):
     # Tranformer Encoder
     assert image_size % patch_size == 0, "image_size must be a multiple of patch_size"
@@ -63,13 +63,11 @@ def TransUNet(image_size=224,
         if patch_size == 0:
             patch_size = 1
 
-        if trainable:
-            resnet50v2 = ResNetV2(block_units=resnet_n_layers)
-            y, features = resnet50v2(x)
-        else:
-            resnet50v2, features = resnet_embeddings(x, image_size=image_size, n_skip=n_skip)
-            y = resnet50v2.get_layer("conv4_block6_preact_relu").output
-            x = resnet50v2.input
+        resnet50v2, features = resnet_embeddings(x, image_size=image_size, n_skip=n_skip)
+        if freeze_enc_cnn:
+            resnet50v2.trainable = False
+        y = resnet50v2.get_layer("conv4_block6_preact_relu").output
+        x = resnet50v2.input
     else:
         y = x
         features = None
