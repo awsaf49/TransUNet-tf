@@ -33,7 +33,7 @@ def resnet_embeddings(x, image_size=224, n_skip=3):
             features.append(resnet50v2.get_layer(l).output)
     return resnet50v2, features
     
-def TransUnet(image_size=224, 
+def TransUNet(image_size=224, 
                 patch_size=16, 
                 hybrid=True,
                 grid=(14,14), 
