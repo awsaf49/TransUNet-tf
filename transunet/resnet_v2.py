@@ -154,3 +154,18 @@ class ResNetV2(tfk.Model):
             for j in range(self.block_units[i]):
                 self.body.layers[i].layers[j].load_from(
                     res_weights, n_block=f"block{i+1}", n_unit=f"unit{j+1}")
+                
+def resnet_embeddings(x, image_size=224, n_skip=3, pretrain=True):
+    resnet50v2 = tfk.applications.ResNet50V2(weights='imagenet' if pretrain else None,
+                                             include_top=False, 
+                                             input_shape=(image_size, image_size, 3))
+    # resnet50v2.trainable = False
+    _ = resnet50v2(x)
+    layers = ["conv3_block4_preact_relu",
+              "conv2_block3_preact_relu",
+              "conv1_conv"]
+    features = []
+    if n_skip > 0:
+        for l in layers:
+            features.append(resnet50v2.get_layer(l).output)
+    return resnet50v2, features
