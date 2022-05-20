@@ -4,9 +4,7 @@
 
 ## Installation
 ```shell
-git clone https://github.com/awsaf49/TransUNet-tf.git
-cd TransUNet-tf
-pip install -r requirements.txt
+pip install transunet
 ```
 
 ## Usage
