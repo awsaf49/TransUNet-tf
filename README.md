@@ -13,7 +13,7 @@ from transunet import TransUNet
 model = TransUNet(image_size=224, pretrain=True)
 ```
 ## Notebook
-Refer to this [Kaggle Notebook](https://www.kaggle.com/code/awsaf49/uwmgi-transunet-2-5d-train-tf) for use case of TransUnet. It is mention worthy that this notebok won Google OSSS Expert Award using TransUnet!
+Refer to this [Kaggle Notebook](https://www.kaggle.com/code/awsaf49/uwmgi-transunet-2-5d-train-tf) for use case of TransUnet in **2.5D Data**. It is mention worthy that this notebok won **Google OSSS Expert Award** using TransUnet!
 
 ## References 
 * [TransUNet](https://github.com/Beckschen/TransUNet)(Official)
