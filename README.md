@@ -4,7 +4,7 @@
 
 ## Installation
 ```shell
-pip install transunet
+!pip install transunet
 ```
 
 ## Usage
